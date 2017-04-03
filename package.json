@@ -1,0 +1,23 @@
+{
+  "name": "automation_our",
+  "version": "1.0.0",
+  "description": "our automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "wdio-appium-service": "^0.2.2",
+    "wdio-mocha-framework": "^0.5.4",
+    "wdio-selenium-standalone-service": "0.0.7",
+    "wdio-spec-reporter": "0.1.0",
+    "webdriverio": "^4.4.0"
+  },
+  "dependencies": {
+    "appium": "^1.6.3",
+    "webdriverio": "^4.4.0"
+  }
+}
