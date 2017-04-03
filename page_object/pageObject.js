@@ -1,5 +1,5 @@
 "use strict";
-var LoginPage = require("./login.page.js");
+// var LoginPage = require("./login.page.js");
 
 class Page {
 

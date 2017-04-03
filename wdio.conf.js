@@ -1,15 +1,11 @@
-var env = require('./environments.js');
-var chosenUrl;
-//DOES NOT WORK
-// console.log(process.env.SERVER);
-// if (process.env.SERVER === "qa"){
-//     baseUrl = 'https://www.QA_SITE.com';
-// }else if (process.env.SERVER === "stage"){
-//     baseUrl = 'https://www.STAGE_SITE.com';
-// }
+var baseUrl = 'localhost';
+if (process.env.SERVER === "QA"){
+    baseUrl = 'https://QA_SITE.com';
+}else if(process.env.SERVER === "STAGE"){
+    baseUrl = 'https://STAGE_SITE.com';
+}
 
 exports.config = {
-    
     //
     // ==================
     // Specify Test Files
@@ -24,7 +20,8 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+        './WORKING FILES/**',
+        './PROGRESS WITH APPIUM/**'
     ],
     //
     // ============
@@ -82,7 +79,7 @@ exports.config = {
     //
     // Set a base URL in order to shorten url command calls. If your url parameter starts
     // with "/", then the base url gets prepended.
-    baseUrl: env, //'http://localhost',
+    baseUrl: baseUrl, //'http:localhost',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
