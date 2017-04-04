@@ -1,8 +1,9 @@
 var LoginPage = require('./login.page.js');
+var env = require('../environments/environment.js');
 
 var SignUpPage = Object.create(LoginPage, {
 
-	url:{get: function(){return "https://QA_SITE/signup";}},
+	url:{get: function(){return ("https://" + env.url + ".com/signup");}},
 	name: {get: function(){return $('//input[@formcontrolname="user_name"]')}},
 	confirmPassword: {get: function() {return $('//input[@formcontrolname="confirmPassword"]');}},
 	alreadyMember: {get: function(){return $('//a[@href="/login"]');}},

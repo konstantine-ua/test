@@ -23,18 +23,18 @@ describe('WEB APP', function(){
 		});
 	describe('2.3 Features', function(){
 		
-		describe('should vaidate that the login/signup/forgot password screen can be reached via PROD_SITE', function(){
+		describe('should vaidate that the login/signup/forgot password screen can be reached via landing', function(){
 			
-			it.only('should vaidate that the login screen can be reached via PROD_SITE', function(){
+			it.only('should vaidate that the login screen can be reached via landing', function(){
 			expect(browser.getUrl()).to.equal(LoginPage.url);
 			});
 
-			it('should validate that the signup screen can be reached via PROD_SITE', function(){
+			it('should validate that the signup screen can be reached via landing', function(){
 			LoginPage.signUpLink.click();
 			expect(browser.getUrl()).to.equal(SignUpPage.url);
 			});
 
-			it('should validate that the forgot password screen can be reached via PROD_SITE', function(){
+			it('should validate that the forgot password screen can be reached via landing', function(){
 			LoginPage.forgotPasswordLink.click();
 			expect(browser.getUrl()).to.equal(ForgotPasswordPage.url);
 			});

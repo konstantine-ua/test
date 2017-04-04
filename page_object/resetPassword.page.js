@@ -1,8 +1,9 @@
 var LoginPage = require('./login.page.js');
+var env = require('../environments/environment.js');
 
 var ForgotPasswordPage = Object.create(LoginPage, {
 
-	url:{get: function(){return "https://QA_SITE/reset";}},
+	url:{get: function(){return ("https://" + env.url + ".com/reset");}},
 	alreadyMember: {get: function(){return $('//a[@href="/login"]');}},
 
 //*** METHODS OF THE Forgot Password Page

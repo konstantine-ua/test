@@ -1,19 +1,5 @@
 var env = require('./environments/environment.js');
 
-var baseUrl; // = 'localhost';
-
-if (process.env.SERVER){
-    baseUrl = ('https://' + env.url +'.com');
-}else {baseUrl = 'localhost'};
-
-// if (process.env.SERVER === "STAGE"){
-//     baseUrl = 'https://' + env.url +'.com';
-// }else if(process.env.SERVER === "PROD"){
-//     baseUrl = 'https://STAGE_SITE.com';
-// }else if(process.env.SERVER === "QA"){
-//     baseUrl = 'https://STAGE_SITE.com';
-// }else {baseUrl = 'localhost'};
-
 exports.config = {
     //
     // ==================
@@ -88,7 +74,7 @@ exports.config = {
     //
     // Set a base URL in order to shorten url command calls. If your url parameter starts
     // with "/", then the base url gets prepended.
-    baseUrl: baseUrl, //'http:localhost',
+    baseUrl: ('https://' + env.url +'.com'), 
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -160,7 +146,11 @@ exports.config = {
     // Gets executed just before initialising the webdriver session and test framework. It allows you
     // to manipulate configurations depending on the capability or spec.
     beforeSession: function (config, capabilities, specs) {
-        console.log("CHOSEN ENVIRONMENT IS " + process.env.SERVER); //BAD LUCK WHEN THERE IS NO SERVER SET. DEFAULT VALUE IS USED
+        var current;
+        if (process.env.SERVER === undefined){
+            current = 'QA';
+        }else {current = process.env.SERVER}
+        console.log("CHOSEN ENVIRONMENT IS " + current); //BAD LUCK WHEN THERE IS NO SERVER SET. DEFAULT VALUE IS USED
     } 
     //
     // Gets executed before test execution begins. At this point you can access all global

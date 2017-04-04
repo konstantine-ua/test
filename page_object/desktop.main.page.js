@@ -1,8 +1,9 @@
 var Page = require('./pageObject.js');
+var env = require('../environments/environment.js');
 
 var DesktopMain = Object.create(Page, {
 
-url: {get: function(){return 'https://QA_SITE/';}},
+url:{get: function(){return ("https://" + env.url + ".com/");}}, //PROBABLY WILL NOT WORK BECAUSE THERE IS NO PAIRED DEVICES
 logo: {get: function(){return $("//op-home-logo/div/a");}},
 manageButton: {get: function(){return $("")}},
 devicesButton: {get: function(){return $("((//div[@class=('menu-items')])[1]//a[@class='menu-link'])[1]")}},

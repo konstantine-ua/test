@@ -1,4 +1,5 @@
 var Page = require('./pageObject.js');
+var env = require('../environments/environment.js');
 
 var AddChildPage = Object.create(Page, {
 
