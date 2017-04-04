@@ -7,6 +7,9 @@ var SignUpPage = require('../page_object/signUp.page.js');
 var ForgotPasswordPage = require('../page_object/resetPassword.page.js');
 var AddChildPage = require('../page_object/addChild.page.js');
 
+
+// ANOTHER WAY SHOULD BE INVESTIGATED //
+
 			// expect(Footer.privacyPolicy.isExisting()).to.be.true;
 			// console.log(Footer.privacyPolicy.getText());
 

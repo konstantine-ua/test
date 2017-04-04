@@ -1,5 +1,4 @@
 "use strict";
-// var LoginPage = require("./login.page.js");
 
 class Page {
 
@@ -9,6 +8,7 @@ class Page {
 	get privacyPolicy(){return browser.$('//a[@href="http://PROD_SITE/web-privacy-policy/"]');};
 	get childrenPrivacyPolicy(){return browser.$('//a[@href="http://PROD_SITE/web-childrens-privacy-policy/"]');};
 	get	termsAndConditions() {return browser.$('//a[@href="http://PROD_SITE/web-terms-and-conditions/"]');};
+	
 
 };
 

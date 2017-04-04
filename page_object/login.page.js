@@ -1,8 +1,9 @@
 var Page = require('./pageObject.js');
+var env = require('../environments/environment.js');
 
 var LoginPage = Object.create(Page, {
 
-	url:{get: function(){return "https://QA_SITE/login";}},
+	url:{get: function(){return ("https://" + env.url + ".com/login");}},
 	logo: {get: function() {return $('//img');}},
 	email:{get: function() {return $('//input[@formcontrolname="email"]');}},
 	password: {	get: function() {return $('//input[@formcontrolname="password"]');}},
