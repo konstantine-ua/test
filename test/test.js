@@ -8,24 +8,27 @@ var ForgotPasswordPage = require('../page_object/resetPassword.page.js');
 var AddChildPage = require('../page_object/addChild.page.js');
 
 
-// ANOTHER WAY SHOULD BE INVESTIGATED //
-
-			// expect(Footer.privacyPolicy.isExisting()).to.be.true;
-			// console.log(Footer.privacyPolicy.getText());
-
-			// LoginPage.loginAction("art@mailinator.com", "qwerty");
-			// expect(browser.getUrl()).to.equal("https://QA_SITE/login");
-
 describe('WEB APP', function(){
 	beforeEach(function () {
-			browser.windowHandleMaximize();
-			browser.url('/');
+			webClient.windowHandleMaximize();
+			webClient.url('/');
 		});
+
+describe('Appium verification', function(){
+	it.only ('should start appium and selenium', function(){
+    	appiumClient.pause(5000);
+    	appiumClient.back();
+    	appiumClient.click("//android.widget.TextView[7]");
+    	appiumClient.back();
+    	webClient.url("https://www.google.com");
+	});
+});	
+
 	describe('2.3 Features', function(){
 		
 		describe('should vaidate that the login/signup/forgot password screen can be reached via landing', function(){
 			
-			it.only('should vaidate that the login screen can be reached via landing', function(){
+			it('should vaidate that the login screen can be reached via landing', function(){
 			expect(browser.getUrl()).to.equal(LoginPage.url);
 			});
 

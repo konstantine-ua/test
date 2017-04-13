@@ -1,6 +1,7 @@
 var env = require('./environments/environment.js');
 
 exports.config = {
+    
     //
     // ==================
     // Specify Test Files
@@ -15,8 +16,7 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-        './WORKING FILES/**',
-        './PROGRESS WITH APPIUM/**'
+        // 'path/to/excluded/files'
     ],
     //
     // ============
@@ -34,20 +34,48 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{ //NOTE THAT IF YOU UP TO USE MORE THAN ONE ISNTANCE THEN YOU HAVR TO SET CAPABILITIES AS OBJECT AND NOT AS ARRAY WITH OBJECTS!!!
+    // host: '127.0.0.1',
+    // port: 4723,
+
+
+
+    capabilities: { //NOTE THAT IF YOU UP TO USE MORE THAN ONE ISNTANCE THEN YOU HAVR TO SET CAPABILITIES AS OBJECT AND NOT AS ARRAY WITH OBJECTS!!!
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+        // maxInstances: 1,
         //
-        browserName: 'chrome'
-    }],
+        webClient:{
+            port: 4444,
+	        desiredCapabilities: {
+                maxInstances: 1,   
+                name: 'webClient', // Should check whether this option is required. I have some doubts
+                browserName: 'chrome'
+            }
+    	},
+
+        appiumClient:{
+            port: 4723,
+            desiredCapabilities:{
+    	        maxInstances: 1,
+                name: 'appiumClient',
+                browserName: '',
+                platform: 'Android',
+                adbPort: 5037,
+    	        appiumVersion: "1.4.16",
+    	        deviceName: "3300c2cc4767b2ed", //Samsung   //**LG Nexus "031df65c09357186",
+    	        platformVersion: "6.0.1",
+    	        platformName: "Android",
+    	        app: "D:/AUT_JS/ForAppium/Appium/node_modules/appium/build/unlock_apk/unlock_apk-debug.apk"
+            }
+    	}
+    },
     //
     // ===================
     // Test Configurations
@@ -60,7 +88,7 @@ exports.config = {
     sync: true,
     //
     // Level of logging verbosity: silent | verbose | command | data | result | error
-    logLevel: 'command',
+    logLevel: 'verbose',
     //
     // Enables colors for log output.
     coloredLogs: true,
@@ -104,11 +132,20 @@ exports.config = {
     //     browserevent: {}
     // },
     //
-    // Test runner services
+    //  SERVICES ARE TURNED OFF BECAUSE OF APPIUM AND SELENIUM WORKABILITY PURPOSE. SHOULD BE FIXED LATER
+    //
+    // Test runner services - 
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['selenium-standalone'],
+    // services: ['selenium-standalone'], //, 'appium'
+        // appium:{
+        //     waitStartTime: 6000,
+        //     command: 'appium.cmd',
+        //     args:{
+        //         port: 4723                
+        //     }
+        // },
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -128,7 +165,7 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 30000
+        timeout: 50000
     },
     //
     // =====
@@ -151,7 +188,7 @@ exports.config = {
             current = 'QA';
         }else {current = process.env.SERVER}
         console.log("CHOSEN ENVIRONMENT IS " + current); //BAD LUCK WHEN THERE IS NO SERVER SET. DEFAULT VALUE IS USED
-    } 
+    }
     //
     // Gets executed before test execution begins. At this point you can access all global
     // variables, such as `browser`. It is the perfect place to define custom commands.
