@@ -18,7 +18,7 @@ var AddChildPage = require('../page_object/addChild.page.js');
 
 describe('WEB APP', function(){
 	beforeEach(function () {
-			browser.windowHandleMaximize();
+			// browser.windowHandleMaximize();
 			browser.url('/');
 		});
 	describe('2.3 Features', function(){
